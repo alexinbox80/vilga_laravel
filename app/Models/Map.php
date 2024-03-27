@@ -11,7 +11,6 @@ class Map extends Model
 
     protected $fillable = [
         'page_id',
-        'image_id',
         'header',
         'text'
     ];

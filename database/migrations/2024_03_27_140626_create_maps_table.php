@@ -19,10 +19,6 @@ return new class extends Migration
                 ->on('pages')
                 ->nullOnDelete();
             $table->unsignedBigInteger('image_id')->nullable();
-            $table->foreign('image_id')
-                ->references('id')
-                ->on('images')
-                ->nullOnDelete();
             $table->string('header', 255);
             $table->string('text', 255);
             $table->timestamps();

@@ -10,6 +10,9 @@ class Image extends Model
     use HasFactory;
 
     protected $fillable = [
+        'gallery_id',
+        'schema_id',
+        'map_id',
         'name',
         'original_name',
         'mime',

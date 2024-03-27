@@ -12,7 +12,6 @@ class Gallery extends Model
     protected $fillable = [
         'language',
         'page_id',
-        'image_id',
         'header'
     ];
 }
