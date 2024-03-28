@@ -15,7 +15,7 @@
         }
     ],
     "paths": {
-        "/api/v1/page/": {
+        "/api/v1/page/{lang}": {
             "get": {
                 "tags": [
                     "Страница"
@@ -23,6 +23,18 @@
                 "summary": "Получение страницы",
                 "description": "Получение страницы",
                 "operationId": "page.index",
+                "parameters": [
+                    {
+                        "name": "lang",
+                        "in": "path",
+                        "description": "язык страницы",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "ru"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success",

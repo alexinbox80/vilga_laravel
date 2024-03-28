@@ -4,21 +4,20 @@ namespace App\Services\Pages;
 
 use App\Models\Page;
 use App\Services\Contracts\PageContract;
+use Illuminate\Support\Facades\App;
 
 class PageService implements PageContract
 {
     /**
+     * @param string $language
      * @return array
      */
-    public function index(): array
+    public function index(string $language): array
     {
-        $language = 'en';
-
         $page = Page::whereHas('lang', function ($query) use ($language) {
             return $query->where('language', $language);
         })->first();
 
-        //dd($page);
         return [
             'data' => $page
         ];
