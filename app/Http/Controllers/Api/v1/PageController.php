@@ -13,6 +13,26 @@ class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
+     * @OA\Get(
+     *      path="/api/v1/page/",
+     *      operationId="page.index",
+     *      tags={"Страница"},
+     *      summary="Получение страницы",
+     *      description="Получение страницы",
+     *
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      )
+     * )
+     *
+     * @param ResponseService $responseService
+     * @param PageService $pageService
+     * @return JsonResponse
      */
     public function index(
         ResponseService $responseService,

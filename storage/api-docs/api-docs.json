@@ -1,0 +1,557 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": " API documentation",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://api.vilga.ru",
+            "description": "Вилга: контент одностраничного сайта"
+        },
+        {
+            "url": "http://localhost",
+            "description": "Вилга: контент одностраничного сайта"
+        }
+    ],
+    "paths": {
+        "/api/v1/page/": {
+            "get": {
+                "tags": [
+                    "Страница"
+                ],
+                "summary": "Получение страницы",
+                "description": "Получение страницы",
+                "operationId": "page.index",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Advantage": {
+                "title": "Advantage",
+                "description": "содержит контент компонента страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "page_id": {
+                        "title": "page_id",
+                        "description": "Идентификатор страницы",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "header": {
+                        "title": "header",
+                        "description": "Заголовок компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Заголовок компонента страницы"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Advantage"
+                }
+            },
+            "Banner": {
+                "title": "Banner",
+                "description": "содержит контент компонента страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "page_id": {
+                        "title": "page_id",
+                        "description": "Идентификатор страницы",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "header": {
+                        "title": "header",
+                        "description": "Заголовок компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Заголовок компонента страницы"
+                    },
+                    "sub_header": {
+                        "title": "sub_header",
+                        "description": "Подзаголовок компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Подзаголовок компонента страницы"
+                    },
+                    "form_title": {
+                        "title": "form_title",
+                        "description": "Заголовок формы компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Заголовок формы компонента страницы"
+                    },
+                    "form_name": {
+                        "title": "form_name",
+                        "description": "Поле имя формы компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Иван"
+                    },
+                    "form_phone": {
+                        "title": "form_phone",
+                        "description": "Поле телефон формы компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "7 123 456 6789"
+                    },
+                    "form_button": {
+                        "title": "form_button",
+                        "description": "Текст кнопки формы компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Отправить"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Banner"
+                }
+            },
+            "Footer": {
+                "title": "Footer",
+                "description": "содержит контент компонента страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "page_id": {
+                        "title": "page_id",
+                        "description": "Идентификатор страницы",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "header": {
+                        "title": "header",
+                        "description": "Заголовок компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Заголовок компонента страницы"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Footer"
+                }
+            },
+            "Gallery": {
+                "title": "Gallery",
+                "description": "содержит контент компонента страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "page_id": {
+                        "title": "page_id",
+                        "description": "Идентификатор страницы",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "header": {
+                        "title": "header",
+                        "description": "Заголовок компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Заголовок компонента страницы"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Gallery"
+                }
+            },
+            "Image": {
+                "title": "Image",
+                "description": "содержит изображения страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "gallery_id": {
+                        "title": "gallery_id",
+                        "description": "Идентификатор компонента галерея",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "schema_id": {
+                        "title": "schema_id",
+                        "description": "Идентификатор компонента схема",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "map_id": {
+                        "title": "map_id",
+                        "description": "Идентификатор компонента карта",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Имя файла",
+                        "type": "string",
+                        "format": "string",
+                        "example": "849dba0b61836342bc6b733dc96e452d8913a864"
+                    },
+                    "original_name": {
+                        "title": "name",
+                        "description": "Имя файла во время загрузки",
+                        "type": "string",
+                        "format": "string",
+                        "example": "pic1"
+                    },
+                    "mime": {
+                        "title": "mime",
+                        "description": "Майм тип файла",
+                        "type": "string",
+                        "format": "string",
+                        "example": "application/octet-stream"
+                    },
+                    "extension": {
+                        "title": "extension",
+                        "description": "Расширение файла",
+                        "type": "string",
+                        "format": "string",
+                        "example": "jpg"
+                    },
+                    "size": {
+                        "title": "size",
+                        "description": "Размер файла байт",
+                        "type": "integer",
+                        "format": "int",
+                        "example": "678"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "путь к файлу",
+                        "type": "string",
+                        "format": "string",
+                        "example": "YYYY/MM/DD/"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Описание",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Это нужный файл"
+                    },
+                    "alt": {
+                        "title": "alt",
+                        "description": "Альтернативное описание для картинки",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Это фото скафандра с выставки космонавтики"
+                    },
+                    "sort": {
+                        "title": "sort",
+                        "description": "Флаг сортировки",
+                        "type": "integer",
+                        "format": "int",
+                        "example": "1"
+                    },
+                    "hash": {
+                        "title": "hash",
+                        "description": "Хэш файла",
+                        "type": "string",
+                        "format": "string",
+                        "example": "b9b618da630c76625061de6893f27703131e125c"
+                    },
+                    "disk": {
+                        "title": "disk",
+                        "description": "Хранилище файла",
+                        "type": "string",
+                        "format": "string",
+                        "example": "s3"
+                    },
+                    "group": {
+                        "title": "group",
+                        "description": "Группа файла",
+                        "type": "string",
+                        "format": "string",
+                        "example": "slider"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Image"
+                }
+            },
+            "Item": {
+                "title": "Item",
+                "description": "содержит карточку коипонента страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "advantage_id": {
+                        "title": "advantage_id",
+                        "description": "Идентификатор компонента",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "Заголовок компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Заголовок компонента страницы"
+                    },
+                    "text": {
+                        "title": "text",
+                        "description": "Текст компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Текст компонента страницы"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Item"
+                }
+            },
+            "Lang": {
+                "title": "Lang",
+                "description": "содержит язык страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "language": {
+                        "title": "language",
+                        "description": "Язык страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Язык страницы"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Lang"
+                }
+            },
+            "Map": {
+                "title": "Map",
+                "description": "содержит контент компонента страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "page_id": {
+                        "title": "page_id",
+                        "description": "Идентификатор страницы",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "header": {
+                        "title": "header",
+                        "description": "Заголовок компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Заголовок компонента страницы"
+                    },
+                    "text": {
+                        "title": "text",
+                        "description": "Текст компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Текст компонента страницы"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Map"
+                }
+            },
+            "Menu": {
+                "title": "Menu",
+                "description": "содержит меню компонента страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "page_id": {
+                        "title": "page_id",
+                        "description": "Идентификатор страницы",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Заголовок меню страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Заголовок меню страницы"
+                    },
+                    "href": {
+                        "title": "href",
+                        "description": "Ссылка меню страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "#advantages"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Menu"
+                }
+            },
+            "Page": {
+                "title": "Page",
+                "description": "содержит страницу страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "lang_id": {
+                        "title": "lang_id",
+                        "description": "Идентификатор языка страницы",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "charset": {
+                        "title": "charset",
+                        "description": "Кодировка страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "utf-8"
+                    },
+                    "meta_title": {
+                        "title": "meta_title",
+                        "description": "SEO страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Meta Title"
+                    },
+                    "meta_description": {
+                        "title": "meta_description",
+                        "description": "SEO страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Meta Description"
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "Заголовок страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Vilga villag"
+                    },
+                    "contact_phone": {
+                        "title": "contact_phone",
+                        "description": "Контактный телефон",
+                        "type": "string",
+                        "format": "string",
+                        "example": "+7 999 123 4567"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Page"
+                }
+            },
+            "Schema": {
+                "title": "Schema",
+                "description": "содержит контент компонента страницы",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "page_id": {
+                        "title": "page_id",
+                        "description": "Идентификатор страницы",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "header": {
+                        "title": "header",
+                        "description": "Заголовок компонента страницы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Заголовок компонента страницы"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Schema"
+                }
+            }
+        },
+        "securitySchemes": {
+            "X-APP-KEY": {
+                "type": "apiKey",
+                "name": "X-APP-KEY",
+                "in": "header"
+            }
+        }
+    }
+}

@@ -7,9 +7,88 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * @OA\Schema(
+ *     title="Page",
+ *     description="содержит страницу страницы",
+ *     @OA\Xml(
+ *         name="Page"
+ *     )
+ * )
+ */
 class Page extends Model
 {
     use HasFactory;
+
+    /**
+     * @OA\Property(
+     *     title="id",
+     *     description="id",
+     *     format="int64",
+     *     example=1
+     * )
+     */
+    private int $id;
+
+    /**
+     * @OA\Property(
+     *     title="lang_id",
+     *     description="Идентификатор языка страницы",
+     *     format="int64",
+     *     example=1
+     * )
+     */
+    private int $lang_id;
+
+    /**
+     * @OA\Property(
+     *     title="charset",
+     *     description="Кодировка страницы",
+     *     format="string",
+     *     example="utf-8"
+     * )
+     */
+    private string $charset;
+
+    /**
+     * @OA\Property(
+     *     title="meta_title",
+     *     description="SEO страницы",
+     *     format="string",
+     *     example="Meta Title"
+     * )
+     */
+    private string $meta_title;
+
+    /**
+     * @OA\Property(
+     *     title="meta_description",
+     *     description="SEO страницы",
+     *     format="string",
+     *     example="Meta Description"
+     * )
+     */
+    private string $meta_description;
+
+    /**
+     * @OA\Property(
+     *     title="title",
+     *     description="Заголовок страницы",
+     *     format="string",
+     *     example="Vilga villag"
+     * )
+     */
+    private string $title;
+
+    /**
+     * @OA\Property(
+     *     title="contact_phone",
+     *     description="Контактный телефон",
+     *     format="string",
+     *     example="+7 999 123 4567"
+     * )
+     */
+    private string $contact_phone;
 
     protected $fillable = [
         'lang_id',
