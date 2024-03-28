@@ -9,9 +9,16 @@ use Illuminate\Support\Facades\DB;
 
 class GallerySeeder extends Seeder
 {
-    private array $gallery = [
-        'page_id' => 1,
-        'header' => 'Фотогалерея'
+    private array $galleries = [
+        [
+            'page_id' => 1,
+            'header' => 'Фотогалерея'
+        ],
+        [
+            'page_id' => 2,
+            'header' => 'Photo gallery'
+        ]
+
     ];
 
     /**
@@ -19,9 +26,10 @@ class GallerySeeder extends Seeder
      */
     public function run(): void
     {
-        $gallery = $this->gallery;
-        $gallery['created_at'] = Carbon::now();
-        $gallery['updated_at'] = Carbon::now();
-        DB::table('galleries')->insert($gallery);
+        foreach ($this->galleries as $gallery) {
+            $gallery['created_at'] = Carbon::now();
+            $gallery['updated_at'] = Carbon::now();
+            DB::table('galleries')->insert($gallery);
+        }
     }
 }

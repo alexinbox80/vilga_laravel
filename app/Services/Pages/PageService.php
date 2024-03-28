@@ -12,7 +12,7 @@ class PageService implements PageContract
      */
     public function index(): array
     {
-        $language = 'ru';
+        $language = 'en';
 
         $page = Page::whereHas('lang', function ($query) use ($language) {
             return $query->where('language', $language);

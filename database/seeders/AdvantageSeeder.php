@@ -9,9 +9,15 @@ use Illuminate\Support\Facades\DB;
 
 class AdvantageSeeder extends Seeder
 {
-    private array $advantage = [
-        'page_id' => 1,
-        'header' => 'преимущества'
+    private array $advantages = [
+        [
+            'page_id' => 1,
+            'header' => 'преимущества'
+        ],
+        [
+            'page_id' => 2,
+            'header' => 'advantages'
+        ],
     ];
 
     /**
@@ -19,9 +25,10 @@ class AdvantageSeeder extends Seeder
      */
     public function run(): void
     {
-        $advantage = $this->advantage;
-        $advantage['created_at'] = Carbon::now();
-        $advantage['updated_at'] = Carbon::now();
-        DB::table('advantages')->insert($advantage);
+        foreach ($this->advantages as $advantage) {
+            $advantage['created_at'] = Carbon::now();
+            $advantage['updated_at'] = Carbon::now();
+            DB::table('advantages')->insert($advantage);
+        }
     }
 }

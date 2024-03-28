@@ -29,6 +29,27 @@ class ItemSeeder extends Seeder
             'advantage_id' => 1,
             'title' => 'Центральные коммуникации',
             'text' => 'Поселок оснащен газом и электричеством, коммунальные платежи за которые достаточно недорогие.'
+        ],
+
+        [
+            'advantage_id' => 2,
+            'title' => 'Transport accessibility',
+            'text' => 'The village is located just 15 kilometers from the city of Petrozavodsk. By car the journey will take 15 minutes, regular buses run every 30 minutes.'
+        ],
+        [
+            'advantage_id' => 2,
+            'title' => 'Eco-friendly area',
+            'text' => 'Nature, remote from big cities and industrial centers, will give silence and fresh air'
+        ],
+        [
+            'advantage_id' => 2,
+            'title' => 'Picturesque landscape',
+            'text' => 'The village is surrounded by a forest of pine forests and birch groves. A variety of wild Karelian berries and mushrooms grow in them.'
+        ],
+        [
+            'advantage_id' => 2,
+            'title' => 'Central communications',
+            'text' => 'The village is equipped with gas and electricity, utility bills for which are quite inexpensive.'
         ]
     ];
 

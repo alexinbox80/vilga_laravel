@@ -29,6 +29,27 @@ class MenuSeeder extends Seeder
             'page_id' => 1,
             'name' => 'как проехать',
             'href' => '#map'
+        ],
+
+        [
+            'page_id' => 2,
+            'name' => 'advantages',
+            'href' => '#advantages'
+        ],
+        [
+            'page_id' => 2,
+            'name' => 'gallery',
+            'href' => '#gallery'
+        ],
+        [
+            'page_id' => 2,
+            'name' => 'village plan',
+            'href' => '#schema'
+        ],
+        [
+            'page_id' => 2,
+            'name' => 'How can I get to',
+            'href' => '#map'
         ]
     ];
 
@@ -37,10 +58,10 @@ class MenuSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach ($this->menus as $item) {
+        foreach ($this->menus as $menu) {
             $item['created_at'] = Carbon::now();
             $item['updated_at'] = Carbon::now();
-            DB::table('menus')->insert($item);
+            DB::table('menus')->insert($menu);
         }
     }
 }

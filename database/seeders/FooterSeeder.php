@@ -9,9 +9,15 @@ use Illuminate\Support\Facades\DB;
 
 class FooterSeeder extends Seeder
 {
-    private array $footer = [
-        'page_id' => 1,
-        'header' => 'Вилга парк, поселок Новая Вилга'
+    private array $footers = [
+        [
+            'page_id' => 1,
+            'header' => 'Вилга парк, поселок Новая Вилга'
+        ],
+        [
+            'page_id' => 2,
+            'header' => 'Vilga park, New Vilga village'
+        ]
     ];
 
     /**
@@ -19,9 +25,10 @@ class FooterSeeder extends Seeder
      */
     public function run(): void
     {
-        $footer = $this->footer;
-        $footer['created_at'] = Carbon::now();
-        $footer['updated_at'] = Carbon::now();
-        DB::table('footers')->insert($footer);
+        foreach ($this->footers as $footer) {
+            $footer['created_at'] = Carbon::now();
+            $footer['updated_at'] = Carbon::now();
+            DB::table('footers')->insert($footer);
+        }
     }
 }
