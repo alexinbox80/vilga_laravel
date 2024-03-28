@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Gallery extends Model
 {
@@ -14,4 +15,13 @@ class Gallery extends Model
         'page_id',
         'header'
     ];
+
+    protected $with = [
+        'images'
+    ];
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(Image::class, 'gallery_id', 'id');
+    }
 }
