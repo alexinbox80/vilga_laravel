@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Services\Pages;
+namespace App\Services\Page;
 
 use App\Models\Page;
 use App\Services\Contracts\PageContract;
-use Illuminate\Support\Facades\App;
 
 class PageService implements PageContract
 {

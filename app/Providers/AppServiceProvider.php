@@ -6,8 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use App\Services\Contracts\ResponseContract;
 use App\Services\Response\ResponseService;
 use App\Services\Contracts\PageContract;
-use App\Services\Pages\PageService;
-
+use App\Services\Page\PageService;
+use App\Services\Contracts\CallbackContract;
+use App\Services\Callback\CallbackService;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(ResponseContract::class, ResponseService::class);
         $this->app->bind(PageContract::class, PageService::class);
+        $this->app->bind(CallbackContract::class, CallbackService::class);
     }
 
     /**

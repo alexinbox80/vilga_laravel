@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Page\IndexRequest;
 use App\Http\Resources\Page\PageResource;
-use App\Services\Pages\PageService;
+use App\Services\Page\PageService;
 use App\Services\Response\ResponseService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

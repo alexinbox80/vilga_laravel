@@ -15,6 +15,57 @@
         }
     ],
     "paths": {
+        "/api/v1/page/callback": {
+            "post": {
+                "tags": [
+                    "callback"
+                ],
+                "summary": "Store a newly created resource in storage.",
+                "description": "Форма обратной связи",
+                "operationId": "c607b38ec08e4e83df703060690c077b",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Имя обратившегося пользователя",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "Ivan"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Телефон обратившегося пользователя",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "89991234567"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "format": "boolean",
+                                            "example": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/page/{lang}": {
             "get": {
                 "tags": [
@@ -143,6 +194,37 @@
                 "type": "object",
                 "xml": {
                     "name": "Banner"
+                }
+            },
+            "Callback": {
+                "title": "Callback",
+                "description": "содержит заказы обратных звонков",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Имя пользователя",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Иван"
+                    },
+                    "phone": {
+                        "title": "phone",
+                        "description": "Телефон для обратной связи",
+                        "type": "string",
+                        "format": "string",
+                        "example": "89992345678"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Callback"
                 }
             },
             "Footer": {
