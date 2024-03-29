@@ -1,56 +1,78 @@
+version: '3'
 services:
-    laravel.test:
+    #Laravel App
+    app:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.3
+            context: ./docker
             dockerfile: Dockerfile
             args:
+                WEBROOT: '${WEBROOT:-/var/www/html}'
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-8.3/app
+                TIMEZONE: '${APP_TIMEZONE}'
+        image: vilga:v1
         extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        ports:
-            - '${APP_PORT:-80}:80'
-            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+            - '${SEND_API_HOST}:${APP_HOST_IP:-127.0.0.1}'
+        restart: unless-stopped
+        tty: true
         environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-            IGNITION_LOCAL_SITES_PATH: '${PWD}'
+            SERVICE_NAME: app
+        working_dir: '${WEBROOT}'
         volumes:
-            - '.:/var/www/html'
+            - './:${WEBROOT}'
         networks:
-            - sail
+            - mynet
         depends_on:
+            - nginx
             - pgsql
+
+    #Nginx Service
+    nginx:
+        image: nginx
+        restart: unless-stopped
+        tty: true
+        environment:
+            WEBROOT: '${WEBROOT:-/var/www/html}'
+            NGINX_HOST: '${APP_SERVER_NAME}'
+            NGINX_HTTP_PORT: '${NGINX_HTTP_PORT:-80}'
+            NGINX_HTTPS_PORT: '${NGINX_HTTPS_PORT:-443}'
+            #FORWARD_HTTPS_PORT: '${FORWARD_HTTPS_PORT}'
+        ports:
+            - '${FORWARD_HTTP_PORT:-80}:${NGINX_HTTP_PORT:-80}'
+            - '${FORWARD_HTTPS_PORT:-443}:${NGINX_HTTPS_PORT:-443}'
+        volumes:
+            - './:${WEBROOT}'
+            - ./docker/nginx/conf.d/default.conf:/etc/nginx/templates/default.conf.template
+#            - ./docker/nginx/ssl/:/etc/nginx/ssl/
+        networks:
+            - mynet
+
+    #Postgre Service
     pgsql:
         image: 'postgres:15'
         ports:
-            - '${FORWARD_DB_PORT:-5432}:5432'
+            - '${DB_PORT:-5432}:${DOCKER_DB_PORT:-5432}'
         environment:
             PGPASSWORD: '${DB_PASSWORD:-secret}'
             POSTGRES_DB: '${DB_DATABASE}'
             POSTGRES_USER: '${DB_USERNAME}'
             POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+            SERVICE_NAME: pgsql
         volumes:
-            - 'sail-pgsql:/var/lib/postgresql/data'
-            - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
+            - 'pgsql:/var/lib/postgresql/data'
+            - './docker/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
         networks:
-            - sail
+            - mynet
         healthcheck:
-            test:
-                - CMD
-                - pg_isready
-                - '-q'
-                - '-d'
-                - '${DB_DATABASE}'
-                - '-U'
-                - '${DB_USERNAME}'
+            test: [ "CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}" ]
             retries: 3
             timeout: 5s
+
+#Docker Networks
 networks:
-    sail:
+    mynet:
         driver: bridge
+
+#Volumes
 volumes:
-    sail-pgsql:
+    pgsql:
         driver: local
