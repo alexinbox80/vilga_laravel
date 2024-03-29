@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Page\IndexRequest;
 use App\Http\Resources\Page\PageResource;
 use App\Services\Page\PageService;
 use App\Services\Response\ResponseService;
@@ -16,22 +15,11 @@ class PageController extends Controller
      * Display a listing of the resource.
      *
      * @OA\Get(
-     *      path="/api/v1/page/{lang}",
+     *      path="/api/v1/page",
      *      operationId="page.index",
      *      tags={"Страница"},
      *      summary="Получение страницы",
      *      description="Получение страницы",
-     *
-     *      @OA\Parameter(
-     *            name="lang",
-     *            description="язык страницы",
-     *            required=true,
-     *            in="path",
-     *            @OA\Schema(
-     *                type="string",
-     *                example="ru"
-     *            ),
-     *      ),
      *
      *      @OA\Response(
      *          response=200,
@@ -49,11 +37,9 @@ class PageController extends Controller
     public function index(
         ResponseService $responseService,
         PageService $pageService,
-        IndexRequest $request
     ): JsonResponse
     {
-        $validated = $request->validated();
-        $pages = $pageService->index($validated['language']);
+        $pages = $pageService->index();
 
         return $responseService->success([
             PageResource::make($pages['data'])
