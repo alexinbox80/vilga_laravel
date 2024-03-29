@@ -195,4 +195,24 @@ class Image extends Model
         'disk',
         'group'
     ];
+
+    protected $appends = [
+        'url'
+    ];
+
+    public function getUrlAttribute(?string $default = null): ?string
+    {
+        $resource = config('filesystems.disks.public.url') . '/';
+
+        return $resource . $this->physicalPath();
+    }
+
+    public function physicalPath(): ?string
+    {
+        if ($this->getAttribute('path') === null || $this->getAttribute('name') === null) {
+            return null;
+        }
+
+        return $this->getAttribute('path') . $this->getAttribute('name') . '.' . $this->getAttribute('extension');
+    }
 }
