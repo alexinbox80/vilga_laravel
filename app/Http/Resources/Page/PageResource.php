@@ -24,7 +24,7 @@ class PageResource extends JsonResource
             'contact_phone' => $this->contact_phone,
             'menu' => MenuResource::collection($this->menus),
             'banner' => BannerResource::make($this->banner),
-            'advantage' => AdvantageResource::make($this->advantage),
+            'advantages' => AdvantageResource::make($this->advantage),
             'gallery' => GalleryResource::make($this->gallery),
             'schema' => SchemaResource::make($this->schema),
             'map' => MapResource::make($this->map),
