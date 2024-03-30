@@ -48,7 +48,7 @@ class MenuSeeder extends Seeder
         ],
         [
             'page_id' => 2,
-            'name' => 'How can I get to',
+            'name' => 'how can I get to',
             'href' => '#map'
         ]
     ];
