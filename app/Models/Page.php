@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Orchid\Filters\Filterable;
+use Orchid\Screen\AsSource;
 
 /**
  * @OA\Schema(
@@ -18,7 +20,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Page extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable, AsSource;
 
     /**
      * @OA\Property(

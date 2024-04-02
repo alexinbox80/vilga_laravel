@@ -11,7 +11,7 @@ namespace App\Http\Controllers;
  *     url="http://api.vilga.ru"
  * )
  * @OA\Server(
- *        url="http://localhost",
+ *        url="http://localhost:8080",
  *        description="Вилга: контент одностраничного сайта",
  *   )
  *

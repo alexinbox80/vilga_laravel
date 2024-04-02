@@ -3,6 +3,7 @@
 case $1 in
 build)
     echo "App build"
+    cp ./env/env.prod .env
     docker-compose build
     ;;
 up)

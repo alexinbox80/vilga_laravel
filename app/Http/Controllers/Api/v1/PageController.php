@@ -21,6 +21,8 @@ class PageController extends Controller
      *      summary="Получение страницы",
      *      description="Получение страницы",
      *
+     *     
+     *
      *      @OA\Response(
      *          response=200,
      *          description="Success",

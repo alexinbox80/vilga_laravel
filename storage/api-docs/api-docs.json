@@ -10,7 +10,7 @@
             "description": "Вилга: контент одностраничного сайта"
         },
         {
-            "url": "http://localhost",
+            "url": "http://localhost:8080",
             "description": "Вилга: контент одностраничного сайта"
         }
     ],
